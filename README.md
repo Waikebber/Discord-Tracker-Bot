@@ -70,6 +70,12 @@ node index.js
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Utilized Documentation:
+### Meta Threads API
+- [Retrieve and Discover Posts](https://developers.facebook.com/docs/threads/retrieve-and-discover-posts)
+- [Retrieve User Posts](https://developers.facebook.com/docs/threads/retrieve-and-discover-posts/retrieve-posts)
+
+
 
 
 
