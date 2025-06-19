@@ -1,21 +1,21 @@
-# Discord-Threads-Bot
+# Discord-Tracker-Bot
 
-A Discord bot that helps manage and organize threads in your Discord server by monitoring Threads posts and automatically sharing them in designated Discord channels.
+A Discord bot that helps post messages in your Discord server by monitoring media posts and automatically sharing them in designated Discord channels.
 
 ## Features
 
-- Monitor specific Threads users and automatically post their updates to Discord
+- Monitor specific media and users and automatically post their updates to Discord
 - Filter posts based on keywords
 - Exclude posts containing specific words (unless they match keywords)
 - Support for multiple channel configurations
-- Real-time updates from Threads to Discord
+- Real-time updates from media to Discord
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Waikebber/Discord-Threads-Bot.git
-cd Discord-Threads-Bot
+git clone https://github.com/Waikebber/Discord-Tracker-Bot.git
+cd Discord-Tracker-Bot
 ```
 
 2. Install the required dependencies:
@@ -29,13 +29,20 @@ DISCORD_TOKEN="your_discord_bot_token_here"
 THREADS_TOKEN="your_threads_token_here"
 ```
 
-4. Configure your bot settings in `config.json`:
+4. Configure your bot settings in `app/configs/config.json`:
 ```json
 {
-    "discord-text-channel": "channel-id-1",
-    "user_posts": ["threads_username1", "threads_username2"],
-    "keywords": ["keyword1", "keyword2"],
-    "excluded": ["excluded_word1", "excluded_word2"]
+  "enabledApis": ["reddit"], #whitelist apis
+  "watches": [
+    {
+      "api": "reddit",
+      "discord-text-channel": "Your Discord Channel ID",
+      "subreddits": ["SubredditName"],
+      "users": ["UsersToTrackInSubreddit"],
+      "keywords": ["TrackThis", "AndThat"],
+      "excluded": ["ButNotThis"]
+    }
+  ]
 }
 ```
 
@@ -47,16 +54,18 @@ You can add multiple configurations by adding more objects to the JSON array.
 ```bash
 npm start
 ```
-or 
-```bash
-node index.js
-```
 
 2. The bot will automatically:
    - Monitor the specified Threads users
    - Filter posts based on your keywords
    - Exclude posts containing excluded words (unless they match keywords)
    - Post matching content to the specified Discord channel
+
+## Test
+Test whether it's extracting the right posts using your `config.json` and this script:
+```
+npm run start:test
+```
 
 ## Configuration
 
@@ -74,6 +83,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ### Meta Threads API
 - [Retrieve and Discover Posts](https://developers.facebook.com/docs/threads/retrieve-and-discover-posts)
 - [Retrieve User Posts](https://developers.facebook.com/docs/threads/retrieve-and-discover-posts/retrieve-posts)
+
+### Reddit API
+- [Reddit API](https://www.reddit.com/dev/api/)
 
 
 

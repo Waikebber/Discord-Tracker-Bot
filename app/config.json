@@ -1,8 +1,0 @@
-[
-    {
-      "discord-text-channel": "YOUR_CHANNEL_ID",
-      "user_posts": ["username1", "username2"],
-      "keywords": ["keyword1", "keyword2"],
-      "excluded": ["ignoreThis", "skipThat"]
-    }
-  ]
