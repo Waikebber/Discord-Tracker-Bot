@@ -24,25 +24,25 @@ export async function execute(_, client) {
   saveLastSeen();
   console.log('🔋 Seed complete — only future posts will be recorded.');
 
-  // Poll loop
+  // Poll loop every 15s
   setInterval(async () => {
     for (let i = 0; i < handlers.length; i++) {
       const handler = handlers[i];
       const watch   = config[i];
 
-      // Test mode, skip fetching the Discord channel
+      // Skip Discord - test mode
       let channel;
       if (!TEST_MODE) {
         channel = await client.channels.fetch(watch['discord-text-channel']);
         if (!channel) continue;
       }
-      const results = await handler.poll(lastSeen, filterPost);
 
-      for (const { entry, msg } of results) {
+      const results = await handler.poll(lastSeen, filterPost);
+      for (const { entry, embed } of results) {
         if (TEST_MODE) {
           recordTestPost(entry);
         } else {
-          await channel.send(msg);
+          await channel.send({ embeds: [embed] });
         }
       }
     }

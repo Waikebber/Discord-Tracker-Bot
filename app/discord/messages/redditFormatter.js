@@ -1,15 +1,26 @@
+// src/discord/messages/redditFormatter.js
+import { EmbedBuilder } from 'discord.js';
+
 /**
- * Format a Reddit post or subreddit update for Discord.
- * @param {{author?: string, title: string, permalink: string}} post
+ * Build a Discord Embed for a Reddit post or subreddit update.
+ * @param {{ author?: string, title: string, permalink: string }} post
  * @param {string} subreddit
  * @param {boolean} wildcard  // true if posting newest regardless of author
- * @returns {string}
+ * @returns {EmbedBuilder}
  */
-export function formatRedditMessage(post, subreddit, wildcard = false) {
-    const userPart = wildcard
-        ? `**New in r/${subreddit}:**`
-        : `:reddit: **r/${subreddit} • u/${post.author}**`;
-    return `${userPart}
-    **${post.title}**
-    https://reddit.com${post.permalink}`;
+export function formatRedditEmbed(post, subreddit, wildcard = false) {
+  const url        = `https://reddit.com${post.permalink}`;
+  const authorName = wildcard ? `r/${subreddit}` : `u/${post.author}`;
+  const embed = new EmbedBuilder()
+    .setTitle(post.title)
+    .setURL(url)
+    .setAuthor({
+      name: authorName,
+      iconURL: 'https://www.redditstatic.com/desktop2x/img/favicon/favicon-96x96.png'
+    })
+    .setColor('#FF5700')
+    .setFooter({ text: `r/${subreddit}` })
+    .setTimestamp();
+
+  return embed;
 }
