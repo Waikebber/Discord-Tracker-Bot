@@ -20,7 +20,14 @@ export default async function fetchReddit(subreddit, username) {
     params = { limit: 1 };
   }
 
-  const resp = await api.get(url, { params });
+  const resp = await api.get(url, {
+    params,
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
+                    'AppleWebKit/537.36 (KHTML, like Gecko) ' +
+                    'Chrome/115.0.0.0 Safari/537.36'
+    }
+  });
   const children = resp.data.data.children;
   if (!children.length) return null;
 
