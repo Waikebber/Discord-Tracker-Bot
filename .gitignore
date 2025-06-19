@@ -5,3 +5,4 @@ npm-debug.log
 .DS_Store
 
 app/configs/*.json
+!app/configs/config.json

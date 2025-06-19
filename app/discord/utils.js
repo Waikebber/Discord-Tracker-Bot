@@ -14,7 +14,18 @@ export let lastSeen = {};
 export function loadConfig() {
   const cfg = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
   const { enabledApis, watches } = cfg;
-  return watches.filter(w => enabledApis.includes(w.api));
+
+  return watches
+    .filter(w => enabledApis.includes(w.api))
+    .map(w => {
+      const chanKey = w['discord-text-channel'];
+      const resolved = process.env[chanKey] || chanKey;
+
+      return {
+        ...w,
+        'discord-text-channel': resolved
+      };
+    });
 }
 
 export function loadLastSeen() {

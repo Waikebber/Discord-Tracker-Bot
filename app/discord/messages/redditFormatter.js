@@ -1,8 +1,7 @@
-// src/discord/messages/redditFormatter.js
 import { EmbedBuilder } from 'discord.js';
 
 /**
- * Build a Discord Embed for a Reddit post or subreddit update.
+ * Builds a Discord Embed for a Reddit post or subreddit update.
  * @param {{ author?: string, title: string, permalink: string }} post
  * @param {string} subreddit
  * @param {boolean} wildcard  // true if posting newest regardless of author

@@ -75,6 +75,33 @@ npm run start:test
 - `keywords`: List of keywords that posts must contain to be shared
 - `excluded`: List of words that will cause a post to be ignored (unless it contains a keyword)
 
+### .env and config.jsom
+This is what your `.env` may look like:
+```
+DISCORD_TOKEN="YOUR_KEY_HERE"
+THREADS_TOKEN="YOUR_KEY_HERE"
+
+SERVER1_POKEMON_CHANNEL_ID="12344567890"
+```
+
+And here's what the `app/configs/config.json` file may look like:
+```json
+{
+  "enabledApis": ["reddit"], 
+  "watches": [
+    {
+      "api": "reddit",
+      "discord-text-channel": "SERVER1_POKEMON_CHANNEL_ID",
+      "subreddits": ["PokemonRestocks"],
+      "users": ["TrackaLackerBot"],
+      "keywords": ["MSRP", "Price Drop", "Below MSRP"],
+      "excluded": []
+    }
+  ]
+}
+
+```
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

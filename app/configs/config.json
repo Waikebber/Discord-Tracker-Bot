@@ -1,0 +1,13 @@
+{
+  "enabledApis": ["reddit"], 
+  "watches": [
+    {
+      "api": "reddit",
+      "discord-text-channel": "SERVER1_POKEMON_CHANNEL_ID",
+      "subreddits": ["PokemonRestocks"],
+      "users": ["TrackaLackerBot"],
+      "keywords": ["MSRP", "Price Drop", "Below MSRP"],
+      "excluded": []
+    }
+  ]
+}
