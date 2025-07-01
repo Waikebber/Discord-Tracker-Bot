@@ -1,5 +1,5 @@
 import { BaseHandler } from './baseHandler.js';
-import fetchThreads from '../../apis/fetchThreads.js';
+import fetchThreads from '../../apis/meta/fetchThreads.js';
 import { formatThreadMessage } from '../messages/threadFormatter.js';
 
 export class ThreadsHandler extends BaseHandler {

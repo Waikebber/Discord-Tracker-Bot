@@ -1,4 +1,4 @@
-import api from './rateLimitedAxios.js';
+import api from '../rateLimitedAxios.js';
 
 const BASE_URL = 'https://graph.threads.net/v1.0';
 const userIdCache = new Map();

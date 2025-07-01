@@ -1,5 +1,5 @@
 import { BaseHandler }     from './baseHandler.js';
-import fetchReddit        from '../../apis/fetchReddit.js';
+import fetchReddit        from '../../apis/reddit/fetchReddit.js';
 import { formatRedditEmbed } from '../messages/redditFormatter.js';
 
 export class RedditHandler extends BaseHandler {
